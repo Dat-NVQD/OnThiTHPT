@@ -12,7 +12,7 @@ void timgsocaytrendung(string a,int n,int b[],int &dem)
     for(int j(0);j<a.length();j++)
     {
         int s(0);
-        for(int k(0);k<a.length();k++)
+        for(int k(j);k<a.length();k++)//CSQEAXHRVXQYXLERRGKZFQETISBFGTDKDEVGHZHLAEKXJRYDMFUXCMGCYHBBJQLEALG
         {
             if(a[j]==a[k])
             {

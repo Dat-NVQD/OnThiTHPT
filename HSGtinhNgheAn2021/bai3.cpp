@@ -2,23 +2,23 @@
 #include<fstream>
 
 using namespace std;
-void sovongle(int n, int a[],int sovong)
+void sovongle(long int n, long int a[],long int sovong)
 {
-    int xl=1,check=1;
+    long int xl=1,check=1;
     if(check==n-1)
     {
         sovong++;
     }
     else
     {
-        for(int i(0);i<n/2;i++)
+        for(long int i(0);i<n/2;i++)
         {
             if(check==n-1)
             {
                 break;
             }
             sovong++;
-            for(int j(0);j<n;j++)//1 7 3 2 4 6 5 8
+            for(long int j(0);j<n;j++)//1 7 3 2 4 6 5 8
             {
                 if(a[j]==xl)
                 {
@@ -33,23 +33,23 @@ void sovongle(int n, int a[],int sovong)
     cout << sovong;
     
 }
-void sovongchan(int n, int a[],int sovong)
+void sovongchan(long int n, long int a[],long int sovong)
 {
-    int xc=2,check=2;
+    long int xc=2,check=2;
     if(check==n)
     {
         sovong++;
     }
     else
     {
-        for(int i(0);i<n/2;i++)
+        for(long int i(0);i<n/2;i++)
         {
             if(check==n)
             {
                 break;
             }
             sovong++;
-            for(int j(0);j<n;j++)//1 7 3 2 4 6 5 8
+            for(long int j(0);j<n;j++)//1 7 3 2 4 6 5 8
             {
                 if(a[j]==xc)
                 {
@@ -70,12 +70,12 @@ int main()
     freopen("bacnam.inp","r",stdin);
     freopen("bacnam.out","w",stdout);
 
-    int n;
+    long int n;
     do
     {
        cin >> n;
     } while (2>=n && n<=200000);
-    int a[n],sovong(0);for(int i(0);i<n;i++){cin >> a[i];};
+    long int a[n],sovong(0);for(long int i(0);i<n;i++){cin >> a[i];};
     sovongle(n,a,sovong);cout << endl; 
     sovongchan(n,a,sovong);
     
