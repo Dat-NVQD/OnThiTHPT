@@ -1,77 +1,76 @@
 #include<iostream>
-#include<bits/stdc++.h>
 #include<math.h>
+#include<fstream>
 using namespace std;
 
-void thetich(int i, double V[])
+void thetich(double v[],int n)
 {
-    int r,h;
-    cin >> r >> h;
-    V[i] = M_PI*r*r*h;
+    for(int i(0);i<n;i++)
+    {
+        int r,h;
+        cin >> r >> h;
+        v[i]=M_PI*r*r*h;
+    }
 }
 
-void quyhoach(int i, double sum[], double V[])
+void quyhoach(int n,int max,int MAX[],double v[])
 {
-    if(i==0)
+    for(int i(1);i<n;i++)
     {
-        sum[i]=V[i];
-    }
-    else
-    {
-        double max=V[i];
-        sum[i]=V[i];
-        for(int j(i);j>0;j--)
+        for(int j(0);j<i;j++)
         {
-            if(V[j-1]<max)
+            if(v[j]<v[i])
             {
-                sum[i]=sum[i]+V[j-1];
-                max=V[j-1];
+                MAX[i]=MAX[j]+1;
             }
         }
     }
 }
 
-void xuli(int n, double sum[])
+void findmax(int n, int MAX[],int &Vmax)
 {
     for(int i(0);i<n-1;i++)
     {
-        if(sum[i]>sum[i+1])
+        if(MAX[i]>MAX[i+1])
         {
-            sum[i+1]=sum[i];
+            int temp = MAX[i+1];
+            MAX[i+1]=MAX[i];
+            MAX[i]=temp;
         }
     }
-    cout << fixed << setprecision(3) << sum[n-1];
+    Vmax=MAX[n-1];
+}
+
+void thapchongnguoc()
+{
+    int s(1);
+    for(int i(0);i<n;i++)
+    {
+        for(int j(i);j<n;j++)
+        {
+            if(MAX[j]==s)
+            {
+                
+            }
+        }
+        s++;
+    }
 }
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
     freopen("bcake.inp","r",stdin);
     freopen("bcake.out","w",stdout);
-    int n; cin >> n;double V[n],Sum[n];
+    int n;cin >> n;double v[n];
+    thetich(v,n);
+    int max(0), MAX[n];
     for(int i(0);i<n;i++)
     {
-        thetich(i,V);
+        MAX[i]=1;
     }
-    for(int i(0);i<n;i++)
-    {
-        quyhoach(i,Sum,V);
-    }
-    xuli(n,Sum);
+    quyhoach(n,max,MAX,v);int Vmax;
+    findmax(n,MAX,Vmax);
+    thapchongnguoc();
 
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //cout << fixed << setprecision(3) <<  sum;
     return 0;
 }
