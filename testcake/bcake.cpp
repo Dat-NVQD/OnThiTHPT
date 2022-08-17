@@ -13,7 +13,7 @@ void thetich(double v[],int n)
     }
 }
 
-void quyhoach(int n,int max,int MAX[],double v[])
+void quyhoach(int n,int max,int MAX[],double v[],int &vmax)
 {
     for(int i(1);i<n;i++)
     {
@@ -24,34 +24,21 @@ void quyhoach(int n,int max,int MAX[],double v[])
                 MAX[i]=MAX[j]+1;
             }
         }
+        if(MAX[i]>vmax)
+            vmax=MAX[i];
     }
 }
 
-void findmax(int n, int MAX[],int &Vmax)
-{
-    for(int i(0);i<n-1;i++)
-    {
-        if(MAX[i]>MAX[i+1])
-        {
-            int temp = MAX[i+1];
-            MAX[i+1]=MAX[i];
-            MAX[i]=temp;
-        }
-    }
-    Vmax=MAX[n-1];
-}
+
 
 void thapchongnguoc()
 {
-    int s(1);
+    int s(0)
     for(int i(0);i<n;i++)
     {
-        for(int j(i);j<n;j++)
+        for(int j(s);j<n;j++)
         {
-            if(MAX[j]==s)
-            {
-                
-            }
+            
         }
         s++;
     }
@@ -68,9 +55,13 @@ int main()
     {
         MAX[i]=1;
     }
-    quyhoach(n,max,MAX,v);int Vmax;
+    int vmax = 1;
+    quyhoach(n,max,MAX,v,vmax);
     findmax(n,MAX,Vmax);
-    thapchongnguoc();
+    for(int i(0);i<n;i++)
+    {
+        thapchongnguoc();
+    }
 
     return 0;
 }
